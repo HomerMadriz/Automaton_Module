@@ -4,7 +4,7 @@ def parse(matTrans, finalSt, text, alf):
     strResult = ""
     listResult = []
     errorState = geterror_state(matTrans, finalSt)
-
+    text = text.split("\n")
     for cadena in text:
         for i in range(len(cadena)):
             sub = cadena[i:]
@@ -23,11 +23,10 @@ def parse(matTrans, finalSt, text, alf):
 
                     if current_state in finalSt:
                         listResult.append(strResult)
-    
-    f = open("resultados.txt", 'w')
+    f = ""
     for rs in listResult:
-        f.write(rs + '\n')
-    f.close()
+        f += (rs + '\n')
+    return f
     
 
 def geterror_state(matTrans, finalSt):
